@@ -7,11 +7,12 @@ var method=require("method-override")("_method");
 app.use(method);
  app.use(bodyParser.urlencoded({extended:true}));
  var con = mysql.createConnection({
-  host: "localhost",
-  user: "pradhumn",
-  password: "root",
-  database:"login"
+  host: "us-cdbr-east-02.cleardb.com"
+  user: "b52ab543f504d9",
+  password: "2dbc27ef",
+  database:"heroku_3b61e1ce12c932a"
 });
+ 
   app.get("/",function(req,res){
   
   res.redirect("/create");
@@ -56,7 +57,6 @@ app.post("/search",function(req,res){
 });
 
 app.delete('/all', function (req, res) {                                                       
-//Browsers do support PUT and DELETE but it only by using request via AJAX, but not via 'HTML form' submission//
    con.query(`DELETE FROM Persons WHERE PersonID=${req.body.id}` , function (err,data) {
     if (err) res.send(err);
     res.redirect("/all");
