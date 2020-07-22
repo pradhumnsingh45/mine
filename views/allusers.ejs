@@ -30,7 +30,25 @@
 </head>
 <body style="background-color:powderblue;">
 	
-
+ <nav class="navbar navbar-expand-sm bg-dark navbar-dark">
+  
+  <div class="collapse navbar-collapse" id="collapsibleNavbar">
+    <ul class="navbar-nav">
+      <li class="nav-item">
+        <a class="nav-link" href="/">CREATE</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/update">UPDATE</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" href="/all">ALL USERS</a>
+      </li>  
+      <li class="nav-item">
+        <a class="nav-link" href="/search">SEARCH</a>
+      </li>   
+    </ul>
+  </div>  
+</nav>
 
     <div class="table-data">
         
@@ -40,7 +58,7 @@
 <form class="form-inline" action="/all?_method=delete" method="POST">
   <div class="form-group mx-sm-3 mb-2">
     <label><strong>ID</strong></label>
-    <input type="id" class="form-control" id="id" placeholder="id" name="id">
+    <input type="id" class="form-control" id="id" placeholder="id" name="id" required="">
   </div>
   <button type="submit" class="btn btn-primary mb-2">DELETE</button>
 </form>

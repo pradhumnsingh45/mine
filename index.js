@@ -7,10 +7,10 @@ var method=require("method-override")("_method");
 app.use(method);
  app.use(bodyParser.urlencoded({extended:true}));
  var con = mysql.createConnection({
-  host: "us-cdbr-east-02.cleardb.com"
-  user: "b52ab543f504d9",
-  password: "2dbc27ef",
-  database:"heroku_3b61e1ce12c932a"
+   host: "localhost",
+  user: "pradhumn",
+  password: "root",
+  database:"login"
 });
  
   app.get("/",function(req,res){
@@ -70,6 +70,17 @@ con.query(`update Persons set FirstName=?, LastName=? ,email=? ,phone=? , Addres
 if(err) console.log(err);
 else
 res.redirect("/all");
+});
+});
+app.get("/copy/:id",function(req,res){
+ con.query(`SELECT * FROM Persons WHERE PersonID='${req.params.id}'`, function (err, result) {
+  if (err) res.send(err);
+  var pr=result; 
+  con.query('INSERT INTO Persons SET ?',pr,function(err,result){
+    if(err) console.log(err)
+      res.redirect("/all");
+  });
+
 });
 });
   app.listen(3000,function(){
